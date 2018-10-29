@@ -2,15 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Add</title>
-    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
-    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	<title>Tambah</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	<style>
+		.container-fluid {
+			left: 0;
+		    line-height: 200px;
+		    margin: auto;
+		    margin-top: -100px;
+		    position: absolute;
+		    top: 50%;
+		    width: 100%;
+		    text-align:center;
+		}
+	</style>
 </head>
-
 <body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
-
-    <h2>Data Berhasil Ditambahkan</h2>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container-fluid">
+		<h2>Data Berhasil Ditambahkan</h2>
+		<a class="btn btn-large btn-danger" th:href="@{/}" >Home</a>
+	</div>
+	<footer th:replace="fragments/fragment :: footer-fixed"></footer>
 </body>
-
 </html>

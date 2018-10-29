@@ -2,11 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>404 Not found</title>
+	<title>404 Not Found</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	<style>
+		.container-fluid {
+			left: 0;
+		    line-height: 200px;
+		    margin: auto;
+		    margin-top: -100px;
+		    position: absolute;
+		    top: 50%;
+		    width: 100%;
+		    text-align:center;
+		}
+	</style>
 </head>
-
 <body>
-    <h2>Halaman tidak ditemukan</h2>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container-fluid">
+		<h2>Maaf, Tidak ada halaman tersebut</h2>
+		<a class="btn btn-large btn-danger" th:href="@{/}" >Home</a>
+	</div>
+	<footer th:replace="fragments/fragment :: footer-fixed"></footer>
 </body>
-
 </html>

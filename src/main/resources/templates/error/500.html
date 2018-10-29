@@ -2,26 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Hapus</title>
+	<title>500 Internal Server Error</title>
 	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
 	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 	<style>
-		.container-fluid {
-			left: 0;
-		    line-height: 200px;
-		    margin: auto;
-		    margin-top: -100px;
-		    position: absolute;
-		    top: 50%;
-		    width: 100%;
-		    text-align:center;
-		}
+	.container-fluid {
+		left: 0;
+	    line-height: 200px;
+	    margin: auto;
+	    margin-top: -100px;
+	    position: absolute;
+	    top: 50%;
+	    width: 100%;
+	    text-align:center;
+	}
 	</style>
 </head>
+
 <body>
 	<nav th:replace="fragments/fragment :: navbar"></nav>
 	<div class="container-fluid">
-		<h2>Data Berhasil Dihapus</h2>
+		<h2>Silahkan coba lagi, terjadi kesalahan</h2>
 		<a class="btn btn-large btn-danger" th:href="@{/}" >Home</a>
 	</div>
 	<footer th:replace="fragments/fragment :: footer-fixed"></footer>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Lihat Semua Jabatan</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.jqueryui.min.css"/>
+	<link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/dataTables.jqueryui.min.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready( function () {
+		    $('#jabatanTable').DataTable();
+		} );
+	</script>
+	
+</head>
+
+<body>
+	<header th:replace="fragments/fragment :: navbar"></header>
+	<br>
+
+	<div class="container-fluid">
+		<h3 style="text-align:center;">Daftar Jabatan</h3><hr>
+		<table id="jabatanTable" class="display">
+	       <thead>
+	            <tr>
+					<th>Nama</th>
+	                <th>Deskripsi</th>
+	                <th>Gaji Pokok</th>
+	                <th>Lihat Detail Jabatan</th>
+	            </tr>
+	        </thead>
+			<tr th:each="jabat : ${jabatan}">
+				<td th:text="${jabat.nama}"></td>
+				<td th:text="${jabat.deskripsi}"></td>
+				<td th:text="${jabat.gajiPokok}"></td>
+				<td><a class="btn btn-info" th:href="@{'/jabatan/view?id='+ ${jabat.id}}">Detail</a></td>
+			</tr>
+	    </table>
+	</div>
+	<footer th:replace="fragments/fragment :: footer-static"></footer>
+	
+
+    
+</body>
+
+</html>

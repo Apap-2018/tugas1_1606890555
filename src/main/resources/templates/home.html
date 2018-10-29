@@ -1,49 +1,86 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <title>Home</title>
-
-    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
-    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-</head>
-
-<body>
-    <nav th:replace="fragments/fragment :: navbar"></nav>
-
-    <div class="container-fluid">
-        <h2>Hello!</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Tambah Pilot
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">Fitur untuk menambah pilot.</p>
-                        <a class="btn btn-primary" th:href="@{/pilot/add}">Tambah</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        Cari Pilot berdasarkan Nomor Lisensi
-                    </div>
-                    <form th:action="@{/pilot/view}" method="GET">
-                        <div class="card-body">
-                            <label for="licenseNumber">License Number:</label>
-                            <input type="text" name="licenseNumber" class="form-control" />
-                            <button type="submit" class="btn btn-primary">Cari</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
+	<head>
+		<title>Home</title>
+		
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<header th:replace="fragments/fragment :: navbar"></header>
+		<br>
+		<div class="container-fluid">
+			<h2 style="text-align:center;">Sistem Informasi Kepegawaian</h2>
+			<h6 style="text-align:center;">Selamat datang di Sistem Informasi Kepegawaian</h6>
+			<hr><br>
+			
+			<div class="row">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+							Lihat Data Pegawai berdasarkan NIP
+						</div>
+						<form th:action="@{/pegawai}" method="GET">
+							<div class="card-body">
+								<label for="nip">Masukan Nomor Induk Pegawai</label>
+								<input type="text" name="nip" class="form-control" />
+								<p></p>
+								<button type="submit" class="btn btn-primary">Lihat</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+							Lihat Detail Jabatan
+						</div>
+						
+						<form th:action="@{/jabatan/view}" method="GET">
+							<div class="card-body">
+								<label for="id">Pilih Jabatan</label><br>
+								<select class="form-control" id="id" name="id">
+							        <option value="">Pilih Jabatan</option>
+							        <option th:each="jabat : ${listJabatan}"
+							                th:value="${jabat.id}"
+							                th:text="${jabat.nama}"></option>
+							    </select>
+								<p></p>
+								<button type="submit" class="btn btn-primary">Lihat</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+							Lihat Pegawai Termuda dan Tertua
+						</div>
+						<form th:action="@{/pegawai/termuda-tertua}" method="GET">
+							<div class="card-body">
+								<label for="id">Pilih Instansi</label><br>
+								<select class="form-control" id="id" name="id">
+								<option value="">Pilih Instansi</option>
+							        <option th:each="instan : ${listInstansi}"
+							                th:value="${instan.id}"
+							                th:text="${instan.nama} + ' - ' + ${instan.provinsi.nama}"></option>
+							    </select>
+								<p></p>
+								<button type="submit" class="btn btn-primary">Lihat</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	<br>
+		
+	<footer th:replace="fragments/fragment :: footer-static"></footer>
+	</body>
 </html>
